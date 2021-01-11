@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "90811862014",
+    "project_id": "medisalud-68a8f",
+    "storage_bucket": "medisalud-68a8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90811862014:android:e089f94e404cb1d4144eaf",
+        "android_client_info": {
+          "package_name": "com.dam.medisalud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90811862014-8jjvum4ehhijmfnglo85kpem176q2jq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwLMneD8cFAVwA9tY7XNx6C__ifZGhDq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90811862014-8jjvum4ehhijmfnglo85kpem176q2jq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

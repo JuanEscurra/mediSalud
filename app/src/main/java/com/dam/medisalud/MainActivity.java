@@ -1,14 +1,19 @@
 package com.dam.medisalud;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,13 +22,41 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvEmail;
     private Button btnCerrarSesion;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+                    switch (item.getItemId()) {
+                        case R.id.principalActivity:
+                            selectedFragment = new PrincipalActivity();
+                            break;
+                        case R.id.medicamentosActivity:
+                            selectedFragment = new medicamentosActivity();
+                            break;
+                        case R.id.configurationActivity:
+                            selectedFragment = new ConfigurationActivity();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment,
+                            selectedFragment).commit();
+                    return true;
+                }
+            };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigationView);
+        bottomNavigation.setOnNavigationItemSelectedListener(navListener);
+
+
         mAuth = FirebaseAuth.getInstance();
 
+        /*
         tvEmail = findViewById(R.id.tvEmail);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
@@ -36,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(loginActivity);
                 finish();
             }
-        });
+        });*/
     }
+
 
     public void onStart() {
         super.onStart();
@@ -45,17 +79,15 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
 
-        String email = "";
-        if (currentUser != null) {
-            email = currentUser.getEmail();
-            tvEmail.setText(email);
-        }
     }
 
     private void updateUI(FirebaseUser currentUser) {
-        if (currentUser != null) {
-            startActivity(new Intent(this,MainActivity.class));
-        }
+        if (currentUser == null) {
+            startActivity(new Intent(this,LoginActivity.class));
+        } /*else {
+            String email = currentUser.getEmail();
+            tvEmail.setText(email);
+        }*/
     }
 
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/medicamentosActivity">
+
+    <fragment
+        android:id="@+id/medicamentosActivity"
+        android:name="com.dam.medisalud.medicamentosActivity"
+        android:label="fragment_medicamentos_activity"
+        tools:layout="@layout/fragment_medicamentos_activity" />
+    <fragment
+        android:id="@+id/configurationActivity"
+        android:name="com.dam.medisalud.ConfigurationActivity"
+        android:label="fragment_configuration_activity"
+        tools:layout="@layout/fragment_configuration_activity" />
+    <fragment
+        android:id="@+id/principalActivity"
+        android:name="com.dam.medisalud.PrincipalActivity"
+        android:label="fragment_principal_activity"
+        tools:layout="@layout/fragment_principal_activity" />
+</navigation>

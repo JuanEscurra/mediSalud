@@ -57,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
         if(!email.isEmpty()&&!password.isEmpty()) {
             signIn(email,password);
             onStart();
+        } else {
+            Toast.makeText(LoginActivity.this, "Complete los campos",
+                    Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -71,6 +74,11 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            if(!user.isEmailVerified()) {
+                                user.sendEmailVerification();
+                                Toast.makeText(LoginActivity.this, "Verificar correo " + user.getEmail(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

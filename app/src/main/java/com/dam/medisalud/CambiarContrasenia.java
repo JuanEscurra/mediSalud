@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +37,6 @@ public class CambiarContrasenia extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-
     public void fnCambiarContrasenia(View view) {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if( tvContrasenaOne.getText().toString().equals( tvContrasenaTwo.getText().toString() )) {
@@ -46,10 +46,17 @@ public class CambiarContrasenia extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "User password updated.");
+                                Toast.makeText(CambiarContrasenia.this, "Se cambio correctamente.",
+                                        Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
+            startActivity(new Intent(this,MainActivity.class));
         }
+
     }
 
+    public void cancelar(View view) {
+        startActivity(new Intent(this,MainActivity.class));
+    }
 }

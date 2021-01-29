@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -101,32 +102,16 @@ public class PrincipalActivity extends Fragment {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String fecha = (dayOfMonth + "/" + "0"+(month+1) +"/" + year).toString();
-                Query q=database.getReference("Medicamentos").orderByChild("fecha").equalTo(fecha);
-                q.addChildEventListener(new ChildEventListener() {
+                database.getReference("Medicamentos").orderByChild("fecha").equalTo(fecha).addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                         medicamentoList.removeAll(medicamentoList);
-
-                            Medicamento medicam = snapshot.getValue(Medicamento.class);
-                            System.out.println(medicam.getPastilla());
+                        for (DataSnapshot x:snapshot.getChildren()
+                             ) {
+                            Medicamento medicam = x.getValue(Medicamento.class);
                             medicamentoList.add(medicam);
+                        }
                         adapter.notifyDataSetChanged();
-                    }
-
-0
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
                     }
 
                     @Override
@@ -134,6 +119,7 @@ public class PrincipalActivity extends Fragment {
 
                     }
                 });
+
 
             }
         });

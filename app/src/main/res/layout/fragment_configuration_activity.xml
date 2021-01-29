@@ -80,7 +80,7 @@
             android:textColor="#232528" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnCambiarContrasenia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00FF0000"

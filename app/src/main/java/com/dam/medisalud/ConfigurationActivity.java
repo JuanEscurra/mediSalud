@@ -22,10 +22,12 @@ import com.google.firebase.auth.FirebaseUser;
  * Use the {@link ConfigurationActivity#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class ConfigurationActivity extends Fragment {
     private FirebaseAuth mAuth;
     private TextView tvEmail;
     private Button btnCerrarSesion;
+    private Button btnCambiarContrasenia;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,13 +113,22 @@ public class ConfigurationActivity extends Fragment {
 
         btnCerrarSesion = v.findViewById(R.id.btnCerrarSesion);
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
                 Intent loginActivity = new Intent(getActivity(),LoginActivity.class);
                 loginActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(loginActivity);
+            }
+        });
+
+        btnCambiarContrasenia = v.findViewById(R.id.btnCambiarContrasenia);
+        btnCambiarContrasenia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cambiarActivity = new Intent(getActivity(),CambiarContrasenia.class);
+                cambiarActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(cambiarActivity);
             }
         });
         return v;

@@ -4,26 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF3700B3"
     tools:context=".PrincipalActivity">
     <LinearLayout
+        android:layout_marginLeft="32dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
-            
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calendario de Medicamentos"
+            android:textSize="23dp"
+            android:textColor="#FFF"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="48dp"
+            >
+
+
+
+        </TextView>
+
+
         <CalendarView
             android:id="@+id/calendarV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="358dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+
+
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="34dp"
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:text="#FFF"
+            />
 
 
     </LinearLayout>

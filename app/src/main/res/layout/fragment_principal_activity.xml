@@ -20,16 +20,13 @@
             android:layout_marginLeft="105dp"
             android:layout_marginTop="48dp"
             >
-
-
-
         </TextView>
 
 
         <CalendarView
             android:id="@+id/calendarV"
             android:layout_width="wrap_content"
-            android:layout_height="358dp"
+            android:layout_height="300dp"
             android:layout_marginTop="20dp"
             android:background="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +42,7 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="#FFF"
+            android:textColor="#FFF"
             />
 
 

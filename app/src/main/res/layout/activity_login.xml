@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
 
-        app:srcCompat="@drawable/"
+        app:srcCompat="@drawable/candado"
         android:layout_weight="50"
         />
 

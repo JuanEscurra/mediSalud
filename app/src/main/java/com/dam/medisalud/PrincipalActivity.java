@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -84,6 +85,7 @@ public class PrincipalActivity extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,8 +93,10 @@ public class PrincipalActivity extends Fragment {
         View v = inflater.inflate(R.layout.fragment_principal_activity,container,false);
         calendar = v.findViewById(R.id.calendarV);
         recycler = v.findViewById(R.id.recycler);
-        recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        recycler.setLayoutManager(new GridLayoutManager(getActivity(),3));
         medicamentoList = new ArrayList<>();
+        String currentUser = mAuth.getCurrentUser().getUid();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://medisalud-68a8f-default-rtdb.firebaseio.com/");
 
@@ -109,7 +113,11 @@ public class PrincipalActivity extends Fragment {
                         for (DataSnapshot x:snapshot.getChildren()
                              ) {
                             Medicamento medicam = x.getValue(Medicamento.class);
-                            medicamentoList.add(medicam);
+                            if(medicam.getId().equals(currentUser)){
+                                medicamentoList.add(medicam);
+                            }else{
+                                System.out.println("ERROR");
+                            }
                         }
                         adapter.notifyDataSetChanged();
                     }

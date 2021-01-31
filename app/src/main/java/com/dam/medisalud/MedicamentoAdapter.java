@@ -31,7 +31,10 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
     @Override
     public void onBindViewHolder(@NonNull MedicamentoviewHolder holder, int position) {
         Medicamento medicamentos = medicamento.get(position);
-        holder.textViewPastilla.setText(medicamentos.getPastilla());
+        holder.textViewPastilla.setText(medicamentos.getNombrePastilla());
+        holder.textViewCantidad.setText(medicamentos.getCantidadDosis());
+        holder.textViewHora.setText(medicamentos.getHoraDosis());
+
     }
 
     @Override
@@ -42,10 +45,13 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
     public static class MedicamentoviewHolder extends RecyclerView.ViewHolder{
 
         TextView textViewPastilla;
+        TextView textViewHora;
+        TextView textViewCantidad;
         public MedicamentoviewHolder(View itemview){
             super(itemview);
-            textViewPastilla = itemview.findViewById(R.id.textview_pastilla);
-
+            textViewPastilla = itemview.findViewById(R.id.textview_nombrePastilla);
+            textViewCantidad = itemview.findViewById(R.id.textview_cantidadDosis);
+            textViewHora = itemview.findViewById(R.id.textview_horaDosis);
 
         }
     }

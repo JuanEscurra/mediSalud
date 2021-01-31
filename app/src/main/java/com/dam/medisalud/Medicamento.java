@@ -1,22 +1,29 @@
 package com.dam.medisalud;
 
 public class Medicamento {
-    private String pastilla;
+    private String nombrePastilla;
     private String fecha;
+    private String cantidadDosis;
+    private String horaDosis;
+    private String id;
     public Medicamento(){
 
     }
-    public Medicamento(String pastilla,String fecha){
-        this.pastilla = pastilla;
+
+    public Medicamento(String nombrePastilla, String fecha, String cantidadDosis, String horaDosis, String id) {
+        this.nombrePastilla = nombrePastilla;
         this.fecha = fecha;
+        this.cantidadDosis = cantidadDosis;
+        this.horaDosis = horaDosis;
+        this.id = id;
     }
 
-    public String getPastilla() {
-        return pastilla;
+    public String getNombrePastilla() {
+        return nombrePastilla;
     }
 
-    public void setPastilla(String pastilla) {
-        this.pastilla = pastilla;
+    public void setNombrePastilla(String nombrePastilla) {
+        this.nombrePastilla = nombrePastilla;
     }
 
     public String getFecha() {
@@ -25,5 +32,29 @@ public class Medicamento {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public String getCantidadDosis() {
+        return cantidadDosis;
+    }
+
+    public void setCantidadDosis(String cantidadDosis) {
+        this.cantidadDosis = cantidadDosis;
+    }
+
+    public String getHoraDosis() {
+        return horaDosis;
+    }
+
+    public void setHoraDosis(String horaDosis) {
+        this.horaDosis = horaDosis;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

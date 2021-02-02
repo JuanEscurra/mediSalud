@@ -34,6 +34,7 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
         holder.textViewPastilla.setText(medicamentos.getNombrePastilla());
         holder.textViewCantidad.setText(medicamentos.getCantidadDosis());
         holder.textViewHora.setText(medicamentos.getHoraDosis());
+        holder.textViewFecha.setText(medicamentos.getFecha());
 
     }
 
@@ -47,11 +48,13 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
         TextView textViewPastilla;
         TextView textViewHora;
         TextView textViewCantidad;
+        TextView textViewFecha;
         public MedicamentoviewHolder(View itemview){
             super(itemview);
             textViewPastilla = itemview.findViewById(R.id.textview_nombrePastilla);
             textViewCantidad = itemview.findViewById(R.id.textview_cantidadDosis);
             textViewHora = itemview.findViewById(R.id.textview_horaDosis);
+            textViewFecha = itemview.findViewById(R.id.textview_Fecha);
 
         }
     }

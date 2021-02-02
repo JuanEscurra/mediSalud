@@ -17,71 +17,34 @@
         android:layout_marginRight="15dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="Registrar nuevo medicamento"
+        android:text="Medicamentos"
         android:textColor="@color/black"
         android:textSize="25sp"></TextView>
-
-    <EditText
-        android:id="@+id/textnombrePastilla"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/edt_style"
-        android:hint="Ingrese nombre de la pastilla"
-        android:inputType="textPersonName" />
-
-    <Button
-        android:id="@+id/btnFecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/btn_style"
-        android:text="Fecha" />
     <TextView
-        android:id="@+id/textViewFecha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        />
-
-    <Button
-        android:id="@+id/btnHora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/btn_style"
-        android:text="Hora"/>
-    <TextView
-        android:id="@+id/textViewHora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"/>
-
-    <EditText
-        android:id="@+id/txtcantidadDosis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="0dp"
         android:layout_marginRight="15dp"
-        android:background="@drawable/edt_style"
-        android:hint="Ingrese cantidad de la dosis"
-        android:inputType="textPersonName" />
+        android:layout_marginBottom="20dp"
+        android:text="Medicamentos activos"
+        android:textColor="@color/black"
+        android:textSize="20sp"></TextView>
 
+        <ListView
+            android:id="@+id/ListView"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            />
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/btn_style"
-        android:text="Registrar" />
-
+        android:text="Agregar Nuevo Medicamento" />
 
 </LinearLayout>

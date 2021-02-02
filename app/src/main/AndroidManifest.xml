@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MediSalud">
-        <activity android:name=".AgregarMedicamento"></activity>
+        <activity android:name=".listarFechas"></activity>
+        <activity android:name=".medicamentoRegistro" />
+        <activity android:name=".AgregarMedicamento" />
         <activity android:name=".CambiarContrasenia" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">

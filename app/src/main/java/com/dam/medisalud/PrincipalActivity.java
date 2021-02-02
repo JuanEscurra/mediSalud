@@ -1,6 +1,7 @@
 package com.dam.medisalud;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +45,11 @@ import java.util.List;
 public class PrincipalActivity extends Fragment {
     private CalendarView calendar;
     private FirebaseAuth mAuth;
-    private RecyclerView recycler;
-    private List<Medicamento> medicamentoList;
-    private MedicamentoAdapter adapter;
+    private ListView listViewMedicamento;
+    private List<Medicamento> medicamentoList = new ArrayList<Medicamento>();
+    private ArrayAdapter<Medicamento> adapter;
+    private TextView fechaP;
+    private Button agregar;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -92,44 +98,35 @@ public class PrincipalActivity extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_principal_activity,container,false);
         calendar = v.findViewById(R.id.calendarV);
-        recycler = v.findViewById(R.id.recycler);
-
-        recycler.setLayoutManager(new GridLayoutManager(getActivity(),3));
-        medicamentoList = new ArrayList<>();
         String currentUser = mAuth.getCurrentUser().getUid();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://medisalud-68a8f-default-rtdb.firebaseio.com/");
-
-        adapter = new MedicamentoAdapter(medicamentoList) ;
-        recycler.setAdapter(adapter);
+        fechaP = v.findViewById(R.id.txtFecha);
+        //listViewMedicamento = v.findViewById(R.id.ListViewMedicamento);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String fecha = (dayOfMonth + "/" + "0"+(month+1) +"/" + year).toString();
-                database.getReference("Medicamentos").orderByChild("fecha").equalTo(fecha).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        medicamentoList.removeAll(medicamentoList);
-                        for (DataSnapshot x:snapshot.getChildren()
-                             ) {
-                            Medicamento medicam = x.getValue(Medicamento.class);
-                            if(medicam.getId().equals(currentUser)){
-                                medicamentoList.add(medicam);
-                            }else{
-                                System.out.println("ERROR");
-                            }
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
+                if(month<10 && dayOfMonth<10){
+                    String fecha =("0"+dayOfMonth + "/" + "0"+(month+1) +"/" + year);
+                    fechaP.setText(fecha);
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                }else if(month<10){
+                    String fecha =(dayOfMonth + "/" + "0"+(month+1) +"/" + year);
+                    fechaP.setText(fecha);
+                }else if(dayOfMonth<10){
+                    String fecha =("0"+dayOfMonth + "/" + (month+1) +"/" + year);
+                    fechaP.setText(fecha);
 
-                    }
-                });
-
-
+                }
+                else {
+                    String fecha = (dayOfMonth + "/" + (month + 1) + "/" + year);
+                    fechaP.setText(fecha);
+                }
+                Intent i = new Intent(getActivity(),listarFechas.class);
+                i.addFlags(i.FLAG_ACTIVITY_NEW_TASK|i.FLAG_ACTIVITY_CLEAR_TASK);
+                i.putExtra("fechas",fechaP.getText().toString());
+                startActivity(i);
             }
+
+
         });
         return v;
     }

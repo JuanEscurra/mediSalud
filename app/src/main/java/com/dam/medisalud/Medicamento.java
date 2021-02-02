@@ -57,4 +57,10 @@ public class Medicamento {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return
+                nombrePastilla + " "+ cantidadDosis;
+    }
 }

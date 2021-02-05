@@ -56,7 +56,7 @@ public class Workmanagernoti extends Worker {
             assert nm !=null;
             nm.createNotificationChannel(nc);
         }
-        Intent intent = new Intent(getApplicationContext(),PrincipalActivity.class);
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent,PendingIntent.FLAG_ONE_SHOT );
         builder.setAutoCancel(true).setWhen(System.currentTimeMillis()).setContentTitle(t).setTicker("Nueva notificacion")

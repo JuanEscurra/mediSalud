@@ -122,13 +122,14 @@ public class medicamentoRegistro extends AppCompatActivity {
                 String tag = generateKey();
                 long alertTime = calendar.getTimeInMillis()-System.currentTimeMillis();
                 int random = (int) (Math.random()*50+1);
-                Data data = guardarData("MEDISALUD : Recordatorio Tomar Pastilla",textNombre.getText().toString()+"Cantidad"+textCantidad.getText(),random);
+                Data data = guardarData("MEDISALUD : Recordatorio Tomar Pastilla",textNombre.getText().toString()+" -- "+"Cantidad: "+textCantidad.getText(),random);
                 Workmanagernoti.guardarNoti(alertTime,data,tag);
                 String nombre = textNombre.getText().toString();
                 String cantidad = textCantidad.getText().toString();
                 String fecha = txtFecha.getText().toString();
                 String hora = txtHora.getText().toString();
                 String id = mAuth.getCurrentUser().getUid().toString();
+                String uid = UUID.randomUUID().toString();
                 if(nombre.equals("") && cantidad.equals("")){
                     validacion();
                 }else{
@@ -138,10 +139,12 @@ public class medicamentoRegistro extends AppCompatActivity {
                     m.setCantidadDosis(cantidad);
                     m.setHoraDosis(hora);
                     m.setFecha(fecha);
-                    database.getReference("Medicamentos").child(UUID.randomUUID().toString()).setValue(m);
+                    m.setUid(uid);
+                    database.getReference("Medicamentos").child(uid).setValue(m);
                     Intent inte = new Intent(medicamentoRegistro.this,MainActivity.class);
                     inte.addFlags(inte.FLAG_ACTIVITY_NEW_TASK|inte.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(inte);
+                    Toast.makeText(medicamentoRegistro.this,"Registro agregado correctamente"+"\n"+"Se fijo la hora de la Alarma: "+hora,Toast.LENGTH_LONG).show();
                 }
 
             }

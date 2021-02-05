@@ -59,6 +59,7 @@ public class medicamentosActivity extends Fragment {
 
 
 
+
     Button btnAgregarMedicamento;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -153,10 +154,22 @@ public class medicamentosActivity extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 med = (Medicamento) parent.getItemAtPosition(position);
-                textNombre.setText(med.getNombrePastilla());
-                textCantidad.setText(med.getCantidadDosis());
-                fecha_n.setText(med.getFecha());
-                hora_n.setText(med.getHoraDosis());
+                String nombrePastilla = med.getNombrePastilla();
+                String cantidadDosis = med.getCantidadDosis();
+                String fechaPastilla = med.getFecha();
+                String horaDosis = med.getHoraDosis();
+                String id_per = med.getId();
+                String id_med = med.getUid();
+                Intent i = new Intent(getActivity(),MantenimientoMedicamento.class);
+                i.putExtra("nombrep",nombrePastilla);
+                i.putExtra("cantidadp",cantidadDosis);
+                i.putExtra("fechap",fechaPastilla);
+                i.putExtra("horap",horaDosis);
+                i.putExtra("uid",id_med);
+                i.addFlags(i.FLAG_ACTIVITY_NEW_TASK|i.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+
+
             }
         });
         btnRegistrar = v.findViewById(R.id.btnRegistrar);

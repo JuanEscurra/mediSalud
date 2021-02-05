@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dibujo"
+    android:background="#33ffba"
     android:padding="0dp"
     android:orientation="vertical"
     tools:context=".CambiarContrasenia">
@@ -52,27 +52,33 @@
             android:background="@drawable/edt_style"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-    <Button
-        android:id="@+id/button2"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/btn_style"
-        android:width="250sp"
-        android:onClick="fnCambiarContrasenia"
-        android:text="Cambiar contraseña" />
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/btn_style"
-        android:width="250sp"
-        android:onClick="cancelar"
-        android:text="Volver" />
+        android:layout_height="84dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="220dp"
+            android:background="#00FF0000"
+            android:onClick="cancelar"
+            app:icon="@drawable/ic_baseline_keyboard_return_24"
+            app:iconTint="#3F51B5" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#00FF0000"
+            android:onClick="fnCambiarContrasenia"
+            app:icon="@drawable/ic_baseline_update_24"
+            app:iconTint="#BB36F4" />
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

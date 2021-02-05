@@ -4,49 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#33ffba"
     android:orientation="vertical"
-    tools:context=".medicamentoRegistro">
+    android:background="#33ffba"
+    tools:context=".MantenimientoMedicamento">
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Registro de Medicamentos"
-        android:textColor="@color/black"
-        android:textSize="25sp"></TextView>
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="30sp"
+
+        android:text="Mantenimiento" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre de pastilla">
-
+        android:hint="Nombre de Pastilla">
         <EditText
-            android:id="@+id/textnombrePastilla"
+            android:id="@+id/txtNombrePastilla"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/edt_style"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="25dp"
         android:orientation="horizontal">
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:hint="Fecha">
+
             <EditText
-                android:id="@+id/editFecha"
+                android:id="@+id/txtFecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -55,36 +56,34 @@
                 android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:background="@drawable/edt_style"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/btnFecha"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="-20dp"
             android:layout_marginRight="140dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:background="#00FF0000"
             app:icon="@drawable/ic_baseline_today_24"
-            app:iconTint="#2285FF"
+            app:iconTint="#1E51E9"
             app:iconTintMode="multiply" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="25dp"
         android:orientation="horizontal">
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:hint="Hora">
             <EditText
-                android:id="@+id/editHora"
+                android:id="@+id/txtHora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -107,22 +106,25 @@
             android:background="#00FF0000"
             app:icon="@drawable/ic_baseline_access_time_24"
             app:iconPadding="8dp"
-            app:iconTint="#121111"
+            app:iconTint="#E91E63"
             app:iconTintMode="multiply" />
     </LinearLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:paddingBottom="0dp"
         android:hint="Cantidad de la dosis">
         <EditText
-            android:id="@+id/txtcantidadDosis"
+            android:id="@+id/txtCantidadDosis"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/edt_style"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -134,24 +136,33 @@
             android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="220dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            android:background="#00FF0000"
-            android:onClick="volver"
+            android:layout_marginLeft="130dp"
+            android:layout_marginBottom="15dp"
+            android:background=" #00FF0000"
             app:icon="@drawable/ic_baseline_keyboard_return_24"
             app:iconTint="#3F51B5" />
 
         <Button
-            android:id="@+id/btnGuardar"
+            android:id="@+id/btnEliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="1dp"
             android:background="#00FF0000"
-            android:contentDescription="Agregar"
-            app:icon="@drawable/ic_baseline_add_24"
-            app:iconTint="#0B0A0A" />
+            app:icon="@drawable/ic_baseline_delete_24"
+            app:iconTint="#F44336" />
+        <Button
+            android:id="@+id/btnModificar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="0dp"
+            android:background="#00FF0000"
+            app:icon="@drawable/ic_baseline_save_24"
+            app:iconTint="#090909"
+            app:iconTintMode="multiply" />
+
+
     </LinearLayout>
 
 

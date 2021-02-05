@@ -2,39 +2,40 @@ package com.dam.medisalud;
 
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.roomorama.caldroid.CaldroidFragment;
+import com.roomorama.caldroid.CaldroidListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,11 +46,10 @@ import java.util.List;
 public class PrincipalActivity extends Fragment {
     private CalendarView calendar;
     private FirebaseAuth mAuth;
-    private ListView listViewMedicamento;
-    private List<Medicamento> medicamentoList = new ArrayList<Medicamento>();
     private ArrayAdapter<Medicamento> adapter;
     private TextView fechaP;
     private Button agregar;
+    private List<Medicamentox> listMedicamento = new ArrayList<Medicamentox>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -91,6 +91,19 @@ public class PrincipalActivity extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
     }
+    public static Date ParseFecha(String fecha)
+    {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        }
+        catch (ParseException ex)
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,35 +112,66 @@ public class PrincipalActivity extends Fragment {
         View v = inflater.inflate(R.layout.fragment_principal_activity,container,false);
         calendar = v.findViewById(R.id.calendarV);
         String currentUser = mAuth.getCurrentUser().getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://medisalud-68a8f-default-rtdb.firebaseio.com/");
         fechaP = v.findViewById(R.id.txtFecha);
-        //listViewMedicamento = v.findViewById(R.id.ListViewMedicamento);
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        CaldroidFragment caldroidFragment = new CaldroidFragment();
+        Bundle args = new Bundle();
+        int color = getActivity().getColor(R.color.black);
+        Calendar cal = Calendar.getInstance();
+        args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
+        args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
+        caldroidFragment.setArguments(args);
+        FragmentTransaction t = getActivity().getSupportFragmentManager().beginTransaction();
+        t.replace(R.id.calendarV, caldroidFragment);
+        t.commit();
+        database.getReference("Medicamentos").orderByChild("fecha").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                if(month<10 && dayOfMonth<10){
-                    String fecha =("0"+dayOfMonth + "/" + "0"+(month+1) +"/" + year);
-                    fechaP.setText(fecha);
-
-                }else if(month<10){
-                    String fecha =(dayOfMonth + "/" + "0"+(month+1) +"/" + year);
-                    fechaP.setText(fecha);
-                }else if(dayOfMonth<10){
-                    String fecha =("0"+dayOfMonth + "/" + (month+1) +"/" + year);
-                    fechaP.setText(fecha);
-
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot x:snapshot.getChildren()) {
+                    Medicamentox m =x.getValue(Medicamentox.class);
+                    listMedicamento.add(m);
                 }
-                else {
-                    String fecha = (dayOfMonth + "/" + (month + 1) + "/" + year);
-                    fechaP.setText(fecha);
+                for(int i=0;i<listMedicamento.size();i++){
+                    String fecha = String.valueOf(listMedicamento.get(i));
+                    ColorDrawable negro = new ColorDrawable(color);
+                    ColorDrawable green = new ColorDrawable(Color.GREEN);
+                    ColorDrawable blue = new ColorDrawable(Color.BLUE);
+                    Date date_fecha= ParseFecha(fecha);
+                    if(i>=0 && i<=3){
+                        caldroidFragment.setBackgroundDrawableForDate(green,date_fecha);
+                        caldroidFragment.setTextColorForDate(R.color.white, date_fecha);
+                        caldroidFragment.refreshView();
+                    }else{
+                        caldroidFragment.setBackgroundDrawableForDate(blue,date_fecha);
+                        caldroidFragment.setTextColorForDate(R.color.white, date_fecha);
+                        caldroidFragment.refreshView();
+                    }
                 }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        CaldroidListener listener = new CaldroidListener() {
+            @Override
+            public void onSelectDate(Date date, View view) {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                String fecha = format.format(date);
                 Intent i = new Intent(getActivity(),listarFechas.class);
+                i.putExtra("fechas",fecha);
                 i.addFlags(i.FLAG_ACTIVITY_NEW_TASK|i.FLAG_ACTIVITY_CLEAR_TASK);
-                i.putExtra("fechas",fechaP.getText().toString());
                 startActivity(i);
             }
 
 
-        });
+        };
+        caldroidFragment.setCaldroidListener(listener);
         return v;
     }
 

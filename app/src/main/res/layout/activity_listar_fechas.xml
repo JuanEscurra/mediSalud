@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imagen"
+    android:background="#33ffba"
     android:orientation="vertical"
     tools:context=".listarFechas">
 
@@ -28,12 +28,12 @@
 
     <Button
         android:id="@+id/btnVolver"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:background="@drawable/btn_style"
+        android:background="#00FF0000"
         android:onClick="volver"
-        android:text="Volver" />
+        app:icon="@drawable/ic_baseline_keyboard_return_24"
+        app:iconTint="#3F51B5" />
 </LinearLayout>

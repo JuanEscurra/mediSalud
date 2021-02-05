@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dibujo"
+    android:background="@color/white"
     android:padding="15dp"
     android:orientation="vertical"
     tools:context=".LoginActivity">
@@ -16,65 +16,86 @@
         android:layout_height="0dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginBottom="15dp"
-        app:srcCompat="@drawable/logo_2"
+        android:layout_marginBottom="10dp"
+        android:background="#00FF0000"
+        app:srcCompat="@drawable/logo"
         android:layout_weight="50"
         />
-
-    <EditText
-        android:id="@+id/fieldEmail"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-60dp"
         android:layout_marginBottom="15dp"
-        android:layout_weight="9"
-        android:drawableLeft="@drawable/habilidades"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:background="@drawable/edt_style"
-        android:hint=" Ingrese su correo electronico"
-        android:inputType="textEmailAddress" />
+        android:gravity="center"
+        android:text="MEDISALUD"
+        android:textSize="30sp"
+        >
+    </TextView>
 
-    <EditText
-        android:id="@+id/fieldPassword"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="9"
-        android:drawableLeft="@drawable/candado"
-        android:ems="10"
-        android:drawablePadding="10dp"
-        android:hint=" Ingrese su contraseña"
-        android:inputType="textPassword"
-        android:background="@drawable/edt_style"/>
 
-    <Button
-        android:id="@+id/btnLogin"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="5dp"
-        android:onClick="ingresar"
-        android:text="Iniciar Sesion"
-        android:background="@drawable/btn_style"/>
-
-    <Button
-        android:id="@+id/btnRegistrarse"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="5dp"
-        android:onClick="registrarte"
-        android:text="Registrase"
+        android:layout_height="wrap_content"
         android:background="@drawable/btn_style"
-         />
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/fieldEmail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="9"
+            android:drawableLeft="@drawable/habilidades"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:background="@drawable/edt_style"
+            android:hint=" Ingrese su correo electronico"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/fieldPassword"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="9"
+            android:drawableLeft="@drawable/candado"
+            android:ems="10"
+            android:drawablePadding="10dp"
+            android:hint=" Ingrese su contraseña"
+            android:inputType="textPassword"
+            android:background="@drawable/edt_style"/>
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="15dp"
+            android:onClick="ingresar"
+            android:text="Iniciar Sesion"
+            android:background="@drawable/btn_style"/>
+
+        <Button
+            android:id="@+id/btnRegistrarse"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="15dp"
+            android:onClick="registrarte"
+            android:text="Registrase"
+            android:background="@drawable/btn_style"
+            />
+    </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

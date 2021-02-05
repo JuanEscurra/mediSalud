@@ -1,31 +1,21 @@
 package com.dam.medisalud;
 
-public class Medicamento {
+public class Medicamentox {
     private String nombrePastilla;
     private String fecha;
     private String cantidadDosis;
     private String horaDosis;
     private String id;
-    private String uid;
-    public Medicamento(){
+    public Medicamentox(){
 
     }
 
-    public Medicamento(String nombrePastilla, String fecha, String cantidadDosis, String horaDosis, String id,String uid) {
+    public Medicamentox(String nombrePastilla, String fecha, String cantidadDosis, String horaDosis, String id) {
         this.nombrePastilla = nombrePastilla;
         this.fecha = fecha;
         this.cantidadDosis = cantidadDosis;
         this.horaDosis = horaDosis;
         this.id = id;
-        this.uid=uid;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 
     public String getNombrePastilla() {
@@ -70,8 +60,6 @@ public class Medicamento {
 
     @Override
     public String toString() {
-        return
-                nombrePastilla + " "+ cantidadDosis;
+        return fecha;
     }
-
 }

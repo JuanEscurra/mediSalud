@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dibujo"
+    android:background="#33ffba"
     android:padding="0dp"
     android:orientation="vertical"
     tools:context=".medicamentosActivity">
@@ -36,15 +36,17 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             />
+
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/btn_style"
-        android:text="Agregar Nuevo Medicamento" />
+        android:text="Nuevo Medicamento"
+        app:icon="@drawable/ic_add" />
 
 </LinearLayout>

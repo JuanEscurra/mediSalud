@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dibujo"
+    android:background="#33ffba"
     android:padding="0dp"
     android:orientation="vertical"
     tools:context=".PrincipalActivity">
@@ -20,15 +20,17 @@
         android:text="Calendario de Medicamentos"
         android:textColor="@color/black"
         android:textSize="25sp"></TextView>
+
     <CalendarView
         android:id="@+id/calendarV"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_height="360dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="0dp"
         android:background="@drawable/edt_style"
+
         />
     <TextView
         android:id="@+id/txtFecha"
@@ -36,5 +38,7 @@
         android:layout_height="wrap_content"
         android:text=""
         ></TextView>
+
+
 </LinearLayout>
 

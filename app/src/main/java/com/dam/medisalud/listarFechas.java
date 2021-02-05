@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -23,6 +24,7 @@ public class listarFechas extends AppCompatActivity {
     private List<Medicamento> medicamentoList = new ArrayList<Medicamento>();
     private ArrayAdapter<Medicamento> adapter;
     private ListView listViewMedicamento;
+    private Medicamento med;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,26 @@ public class listarFechas extends AppCompatActivity {
 
         }
         });
-
+        listViewMedicamento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                med = (Medicamento) parent.getItemAtPosition(position);
+                String nombrePastilla = med.getNombrePastilla();
+                String cantidadDosis = med.getCantidadDosis();
+                String fechaPastilla = med.getFecha();
+                String horaDosis = med.getHoraDosis();
+                String id_per = med.getId();
+                String id_med = med.getUid();
+                Intent i = new Intent(listarFechas.this,MantenimientoMedicamento.class);
+                i.putExtra("nombrep",nombrePastilla);
+                i.putExtra("cantidadp",cantidadDosis);
+                i.putExtra("fechap",fechaPastilla);
+                i.putExtra("horap",horaDosis);
+                i.putExtra("uid",id_med);
+                i.addFlags(i.FLAG_ACTIVITY_NEW_TASK|i.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+        });
     }
 
     public void volver(View view){

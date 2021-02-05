@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +29,8 @@ public class ConfigurationActivity extends Fragment {
     private TextView tvEmail;
     private Button btnCerrarSesion;
     private Button btnCambiarContrasenia;
+    private Button btnPerfil;
+    private Button btnInfo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -123,12 +126,28 @@ public class ConfigurationActivity extends Fragment {
         });
 
         btnCambiarContrasenia = v.findViewById(R.id.btnCambiarContrasenia);
+        btnPerfil= v.findViewById(R.id.btnPerfil);
         btnCambiarContrasenia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent cambiarActivity = new Intent(getActivity(),CambiarContrasenia.class);
                 cambiarActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(cambiarActivity);
+            }
+        });
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cambiarActivity = new Intent(getActivity(),DatosPersonales.class);
+                cambiarActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(cambiarActivity);
+            }
+        });
+        btnInfo = v.findViewById(R.id.btnInfo);
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"MEDISALUD\n"+"EMPRESA DEDICADA AL CONTROL DE MEDICAMENTOS DE PERSONAS MAYORES",Toast.LENGTH_LONG).show();
             }
         });
         return v;

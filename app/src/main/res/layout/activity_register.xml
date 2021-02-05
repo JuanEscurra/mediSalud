@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dibujo"
+    android:background="#33ffba"
     android:padding="15dp"
     android:orientation="vertical"
     tools:context=".RegisterActivity">

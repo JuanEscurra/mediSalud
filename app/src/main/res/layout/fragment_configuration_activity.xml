@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imagen"
+    android:background="#33ffba"
     tools:context=".ConfigurationActivity">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_height="120sp"
             android:divider="@drawable/ic_launcher_foreground"
             android:orientation="horizontal"
-            android:background="#1d3557"
+            android:background="#FDFEFE"
             android:gravity="center_vertical">
 
             <ImageView
@@ -55,30 +55,15 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cuenta"
-            android:textSize="24sp" />
-
-        <!--<Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00FF0000"
-            android:gravity="left"
-            android:text="Button"
-            android:textColor="#232528" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00FF0000"
             android:gravity="left"
-            android:text="Button"
-            android:textColor="#232528" />-->
+            android:text="Datos del Usuario"
+            android:textColor="#232528"/>
 
         <Button
             android:id="@+id/btnCambiarContrasenia"
@@ -87,6 +72,14 @@
             android:background="#00FF0000"
             android:gravity="left"
             android:text="Cambiar contraseña"
+            android:textColor="#232528" />
+        <Button
+            android:id="@+id/btnInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:gravity="left"
+            android:text="Sobre Nosotros"
             android:textColor="#232528" />
 
         <Button
